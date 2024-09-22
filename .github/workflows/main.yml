@@ -24,10 +24,10 @@ jobs:
           pip install -r requirements.txt  # Si no tienes dependencias, puedes eliminar esta línea.
 
       - name: Build executable
-        run: pyinstaller --onefile --distpath . felizDia.py  # Cambia 'felizDia.py' por el nombre de tu archivo principal.
+        run: pyinstaller --onefile --distpath . florez-python.py  # Referencia correcta al archivo
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3  # Actualizado a la versión 3
         with:
           name: Windows-executable
-          path: felizDia.exe  # Aquí se guarda el ejecutable en la raíz
+          path: florez-python.exe  # Aquí se guarda el ejecutable en la raíz
