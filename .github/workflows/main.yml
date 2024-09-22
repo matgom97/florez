@@ -3,7 +3,7 @@ name: Build Windows Executable
 on:
   push:
     branches:
-      - main  # Cambia esto si usas otra rama
+      - main
   pull_request:
 
 jobs:
@@ -12,22 +12,22 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v3  # Actualizado a la versión 3
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'  # Cambia esto si usas otra versión
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt  # Si no tienes dependencias, puedes eliminar esta línea.
+          pip install -r requirements.txt
 
       - name: Build executable
-        run: pyinstaller --onefile --distpath . florez-python.py  # Referencia correcta al archivo
+        run: pyinstaller --onefile --distpath . florez-python.py
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3  # Actualizado a la versión 3
+        uses: actions/upload-artifact@v3
         with:
           name: Windows-executable
-          path: florez-python.exe  # Aquí se guarda el ejecutable en la raíz
+          path: florez-python.exe
