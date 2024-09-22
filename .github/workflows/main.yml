@@ -1,0 +1,35 @@
+name: Build Windows Executable
+
+on:
+  push:
+    branches:
+      - main  # Solo compilar cuando se haga push a la rama principal
+
+jobs:
+  build:
+    runs-on: windows-latest  # Usa el entorno de Windows
+
+    steps:
+    - name: Check out the code
+      uses: actions/checkout@v3  # Este paso descarga tu código desde GitHub
+
+    - name: Set up Python
+      uses: actions/setup-python@v4  # Este paso configura Python
+      with:
+        python-version: 3.x  # Asegúrate de que coincida con la versión de Python que necesitas
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller  # Instala PyInstaller y otras dependencias necesarias (si las tienes)
+        pip install -r requirements.txt  # Si tienes un archivo de dependencias
+
+    - name: Build executable
+      run: |
+        pyinstaller --onefile florez-python.py  # Reemplaza "florez-python.py" con el nombre de tu archivo principal
+
+    - name: Upload executable
+      uses: actions/upload-artifact@v3
+      with:
+        name: windows-executable
+        path: dist/felizDia.exe  # Reemplaza con el nombre de tu archivo ejecutable
