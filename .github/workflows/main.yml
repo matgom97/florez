@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Actualizado a la versión 3
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -27,7 +27,7 @@ jobs:
         run: pyinstaller --onefile --distpath . felizDia.py  # Cambia 'felizDia.py' por el nombre de tu archivo principal.
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # Actualizado a la versión 3
         with:
           name: Windows-executable
           path: felizDia.exe  # Aquí se guarda el ejecutable en la raíz
